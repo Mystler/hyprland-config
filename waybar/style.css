@@ -27,7 +27,7 @@ window#waybar {
 }
 
 #workspaces button.urgent {
-    background-color: rgba(235, 77, 75, 0.2);
+    background-color: rgba(235, 77, 75, 0.5);
 }
 
 #clock,
@@ -62,12 +62,12 @@ window#waybar {
 
 #battery.charging,
 #battery.plugged {
-    background-color: rgba(38, 166, 91, 0.2);
+    background-color: rgba(70, 255, 150, 0.2);
 }
 
 #battery.charging:hover,
 #battery.plugged:hover {
-    background-color: rgba(38, 166, 91, 0.33);
+    background-color: rgba(70, 255, 150, 0.33);
 }
 
 @keyframes blink {
@@ -79,7 +79,7 @@ window#waybar {
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: rgba(245, 60, 60, 0.2);
+    background-color: rgba(245, 60, 60, 0.5);
     color: #eeeeee;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -93,7 +93,7 @@ window#waybar {
 }
 
 #temperature.critical {
-    background-color: rgba(235, 77, 75, 0.2);
+    background-color: rgba(235, 77, 75, 0.5);
 }
 
 #tray > .passive {
@@ -102,7 +102,7 @@ window#waybar {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: rgba(235, 77, 75, 0.2);
+    background-color: rgba(235, 77, 75, 0.5);
 }
 
 #custom-power {
