@@ -1,0 +1,118 @@
+* {
+    font-family: 'Noto Sans', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #eeeeee;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    background-color: rgba(64, 102, 128, 0.2);
+    border-radius: 100%;
+    border: none;
+    margin: 0 2px;
+}
+
+#workspaces button:hover {
+    background: rgba(128, 204, 255, 0.33);
+}
+
+#workspaces button.focused,
+#workspaces button.active{
+    background-color: rgba(128, 204, 255, 0.2);
+}
+
+#workspaces button.urgent {
+    background-color: rgba(235, 77, 75, 0.2);
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#wireplumber,
+#tray,
+#idle_inhibitor {
+    background-color: rgba(128, 204, 255, 0.2);
+    padding: 0 10px;
+    border-radius: 12px;
+}
+
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#wireplumber:hover,
+#tray:hover,
+#idle_inhibitor:hover {
+    background-color: rgba(128, 204, 255, 0.33);
+}
+
+#battery.charging,
+#battery.plugged {
+    background-color: rgba(38, 166, 91, 0.2);
+}
+
+#battery.charging:hover,
+#battery.plugged:hover {
+    background-color: rgba(38, 166, 91, 0.33);
+}
+
+@keyframes blink {
+    to {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: rgba(245, 60, 60, 0.2);
+    color: #eeeeee;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network.disconnected {
+    background-color: rgba(245, 60, 60, 0.2);
+}
+
+#temperature.critical {
+    background-color: rgba(235, 77, 75, 0.2);
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: rgba(235, 77, 75, 0.2);
+}
+
+#custom-power {
+    padding: 0 6px;
+    margin-right: 4px;
+}
+#custom-lock {
+    padding: 0 6px;
+}
+#custom-power:hover,
+#custom-lock:hover {
+    color: #80ccff;
+}
