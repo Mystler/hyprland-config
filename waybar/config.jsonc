@@ -16,6 +16,7 @@
         "idle_inhibitor",
         "wireplumber#sink",
         "wireplumber#source",
+        "bluetooth",
         "network",
         "cpu",
         "memory",
@@ -74,6 +75,16 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "on-click-right": "nmcli r wifi off && nmcli r wifi on"
     },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_battery_percentage}%",
+        "on-click": "blueman-manager"
+    },
     "wireplumber#sink": {
         "format": "{volume}% {icon}",
         "format-muted": "",
@@ -98,10 +109,12 @@
             "hyprexit": "hyprshutdown",
             "shutdown": "hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown now'",
             "reboot": "hyprshutdown -t 'Rebooting...' --post-cmd 'reboot'"
-        }
+        },
+        "tooltip-format": ""
     },
     "custom/lock": {
         "format": "",
-        "on-click": "hyprlock"
+        "on-click": "hyprlock",
+        "tooltip-format": ""
     }
 }
