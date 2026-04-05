@@ -6,6 +6,7 @@
 @define-color green alpha(#46ff96, 0.25);
 @define-color green-hover alpha(#46ff96, 0.4);
 @define-color text-light #eeeeee;
+@define-color menu-bg alpha(#18181b, 0.8);
 
 * {
     font-family: 'Noto Sans', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
@@ -98,4 +99,19 @@ window#waybar {
 #custom-power:hover,
 #custom-lock:hover {
     color: @main;
+}
+
+menu {
+  background-color: @menu-bg;
+  border: 2px solid alpha(@main, 0.8);
+  border-radius: 12px;
+  color: @text-light;
+  padding: 6px;
+}
+
+menuitem {
+  border: none;
+}
+menuitem:hover {
+  background-color: @main-bg-hover;
 }
