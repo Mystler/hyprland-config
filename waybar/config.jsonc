@@ -1,120 +1,136 @@
 // -*- mode: jsonc -*-
 {
-    "height": 26,
-    "margin-top": 4,
-    "margin-right": 4,
-    "spacing": 4,
-    "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/submap",
-        "hyprland/window"
-    ],
-    /*"modules-center": [
-        "hyprland/window"
-    ],*/
-    "modules-right": [
-        "idle_inhibitor",
-        "wireplumber#sink",
-        "wireplumber#source",
-        "bluetooth",
-        "network",
-        "cpu",
-        "memory",
-        "backlight",
-        "battery",
-        "clock",
-        "tray",
-        "custom/lock",
-        "custom/power"
-    ],
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "tray": {
-        "icon-size": 16,
-        "spacing": 4 
-    },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "backlight": {
-        "format": "{percent}% {icon}",
-        "format-icons": ["🌑", "🌘", "🌗", "🌖", "🌕"]
-    },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "on-click-right": "nmcli r wifi off && nmcli r wifi on"
-    },
-    "bluetooth": {
-        "format": " {status}",
-        "format-connected": " {device_alias}",
-        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-        "tooltip-format": "{controller_alias}\n{num_connections} connected",
-        "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_battery_percentage}%",
-        "on-click": "blueman-manager"
-    },
-    "wireplumber#sink": {
-        "format": "{volume}% {icon}",
-        "format-muted": "",
-        "format-icons": ["", "", ""],
-        "on-click-right": "hyprpwcenter",
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "scroll-step": 5
-    },
-    "wireplumber#source": {
-        "node-type": "Audio/Source",
-        "format": "{volume}% ",
-        "format-muted": "",
-        "on-click-right": "hyprpwcenter",
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-        "scroll-step": 5
-    },
-    "custom/power": {
-        "format" : "⏻",
-        "menu": "on-click",
-        "menu-file": "$HOME/.config/waybar/power_menu.xml",
-        "menu-actions": {
-            "hyprexit": "hyprshutdown",
-            "shutdown": "hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown now'",
-            "reboot": "hyprshutdown -t 'Rebooting...' --post-cmd 'reboot'"
-        },
-        "tooltip-format": ""
-    },
-    "custom/lock": {
-        "format": "",
-        "on-click": "hyprlock",
-        "tooltip-format": ""
+  "height": 26,
+  "margin-top": 4,
+  "margin-right": 4,
+  "spacing": 4,
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/submap",
+    "hyprland/window"
+  ],
+  /*"modules-center": [
+      "hyprland/window"
+  ],*/
+  "modules-right": [
+    "idle_inhibitor",
+    "wireplumber#sink",
+    "wireplumber#source",
+    "bluetooth",
+    "network",
+    "cpu",
+    "memory",
+    "backlight",
+    "battery",
+    "clock",
+    "tray",
+    "custom/lock",
+    "custom/power"
+  ],
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
     }
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 4
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "cpu": {
+    "format": "{usage}% ",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "{}% "
+  },
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "🌑",
+      "🌘",
+      "🌗",
+      "🌖",
+      "🌕"
+    ]
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "{ipaddr}/{cidr} ",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "on-click-right": "nmcli r wifi off && nmcli r wifi on"
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_battery_percentage}%",
+    "on-click": "blueman-manager"
+  },
+  "wireplumber#sink": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ],
+    "on-click-right": "hyprpwcenter",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "scroll-step": 5
+  },
+  "wireplumber#source": {
+    "node-type": "Audio/Source",
+    "format": "{volume}% ",
+    "format-muted": "",
+    "on-click-right": "hyprpwcenter",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "scroll-step": 5
+  },
+  "custom/power": {
+    "format": "⏻",
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/power_menu.xml",
+    "menu-actions": {
+      "hyprexit": "hyprshutdown",
+      "shutdown": "hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown now'",
+      "reboot": "hyprshutdown -t 'Rebooting...' --post-cmd 'reboot'"
+    },
+    "tooltip-format": ""
+  },
+  "custom/lock": {
+    "format": "",
+    "on-click": "hyprlock",
+    "tooltip-format": ""
+  }
 }
