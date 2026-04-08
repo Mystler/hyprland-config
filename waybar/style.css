@@ -9,96 +9,97 @@
 @define-color menu-bg alpha(#18181b, 0.8);
 
 * {
-    font-family: 'Noto Sans', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
-    font-size: 12px;
-    font-weight: bold;
+  font-family:
+    "Noto Sans", "Font Awesome 6 Free", "Font Awesome 6 Brands", monospace;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 window#waybar {
-    background-color: transparent;
-    color: @text-light;
+  background-color: transparent;
+  color: @text-light;
 }
 
 #workspaces button {
-    padding: 0 10px;
-    background-color: @main-bg-dim;
-    border-radius: 100%;
-    border: none;
-    margin: 0 2px;
+  padding: 0 10px;
+  background-color: @main-bg-dim;
+  border-radius: 12px;
+  border: none;
+  margin: 0 2px;
 }
 
 #workspaces button:hover {
-    background: @main-bg-hover;
+  background: @main-bg-hover;
 }
 
 #workspaces button.focused,
-#workspaces button.active{
-    background-color: @main-bg;
+#workspaces button.active {
+  background-color: @main-bg;
 }
 
 #workspaces button.urgent {
-    background-color: @alert;
+  background-color: @alert;
 }
 
 .modules-right label {
-    background-color: @main-bg;
-    padding: 0 10px;
-    border-radius: 12px;
+  background-color: @main-bg;
+  padding: 0 10px;
+  border-radius: 12px;
 }
 
 .modules-right label:hover {
-    background-color: @main-bg-hover;
+  background-color: @main-bg-hover;
 }
 
 #battery.charging,
 #battery.plugged {
-    background-color: @green;
+  background-color: @green;
 }
 
 #battery.charging:hover,
 #battery.plugged:hover {
-    background-color: @green-hover;
+  background-color: @green-hover;
 }
 
 @keyframes blink {
-    to {
-        background-color: rgba(255, 255, 255, 0.5);
-        color: #000000;
-    }
+  to {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000000;
+  }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: @alert;
-    color: @text-light;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  background-color: @alert;
+  color: @text-light;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #network.disconnected {
-    background-color: @alert;
+  background-color: @alert;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+  -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: @alert;
+  -gtk-icon-effect: highlight;
+  background-color: @alert;
 }
 
 #custom-power,
 #custom-lock {
-    padding: 0 6px;
-    background-color: transparent;
+  padding: 0 6px;
+  background-color: transparent;
 }
 #custom-power:hover,
 #custom-lock:hover {
-    color: @main;
+  color: @main;
 }
 
 menu {

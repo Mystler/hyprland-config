@@ -4,11 +4,7 @@
   "margin-top": 4,
   "margin-right": 4,
   "spacing": 4,
-  "modules-left": [
-    "hyprland/workspaces",
-    "hyprland/submap",
-    "hyprland/window"
-  ],
+  "modules-left": ["hyprland/workspaces", "hyprland/submap", "hyprland/window"],
   /*"modules-center": [
       "hyprland/window"
   ],*/
@@ -27,6 +23,13 @@
     "custom/lock",
     "custom/power"
   ],
+  "hyprland/workspaces": {
+    "format": "{id} {windows}",
+    "workspace-taskbar": {
+      "enable": true,
+      "format": "{icon}"
+    }
+  },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
@@ -51,13 +54,7 @@
   },
   "backlight": {
     "format": "{percent}% {icon}",
-    "format-icons": [
-      "🌑",
-      "🌘",
-      "🌗",
-      "🌖",
-      "🌕"
-    ]
+    "format-icons": ["🌑", "🌘", "🌗", "🌖", "🌕"]
   },
   "battery": {
     "states": {
@@ -69,13 +66,7 @@
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "format-icons": ["", "", "", "", ""]
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -100,11 +91,7 @@
   "wireplumber#sink": {
     "format": "{volume}% {icon}",
     "format-muted": "",
-    "format-icons": [
-      "",
-      "",
-      ""
-    ],
+    "format-icons": ["", "", ""],
     "on-click-right": "hyprpwcenter",
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "scroll-step": 5
