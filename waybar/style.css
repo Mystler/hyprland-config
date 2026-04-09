@@ -20,6 +20,10 @@ window#waybar {
   color: @text-light;
 }
 
+#image.logo {
+  padding: 0 0 0 4px;
+}
+
 #workspaces button {
   padding: 0 10px;
   background-color: @main-bg-dim;

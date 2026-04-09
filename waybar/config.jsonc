@@ -4,7 +4,12 @@
   "margin-top": 4,
   "margin-right": 4,
   "spacing": 4,
-  "modules-left": ["hyprland/workspaces", "hyprland/submap", "hyprland/window"],
+  "modules-left": [
+    "image#logo",
+    "hyprland/workspaces",
+    "hyprland/submap",
+    "hyprland/window"
+  ],
   /*"modules-center": [
       "hyprland/window"
   ],*/
@@ -23,6 +28,10 @@
     "custom/lock",
     "custom/power"
   ],
+  "image#logo": {
+    "path": "/home/mystler/Pictures/hyprland-logo.svg",
+    "size": 20
+  },
   "hyprland/workspaces": {
     "format": "{id} {windows}",
     "workspace-taskbar": {
@@ -69,17 +78,19 @@
     "format-icons": ["", "", "", "", ""]
   },
   "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
+    "format-wifi": "{signalStrength}% ",
+    "format-ethernet": "",
+    "tooltip-format": "{ifname} on {essid} via {gwaddr} ",
+    "format-linked": "(No IP) ",
+    "format-disconnected": "󱚼",
+    "format-disabled": "󰖪",
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
     "on-click-right": "nmcli r wifi off && nmcli r wifi on"
   },
   "bluetooth": {
     "format": " {status}",
+    "format-disabled": "󰂲",
+    "format-on": "",
     "format-connected": " {device_alias}",
     "format-connected-battery": " {device_alias} {device_battery_percentage}%",
     "tooltip-format": "{controller_alias}\n{num_connections} connected",
