@@ -117,13 +117,14 @@
   },
   "custom/power": {
     "format": "⏻",
-    "menu": "on-click",
-    "menu-file": "$HOME/.config/waybar/power_menu.xml",
-    "menu-actions": {
-      "hyprexit": "hyprshutdown",
-      "shutdown": "hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown now'",
-      "reboot": "hyprshutdown -t 'Rebooting...' --post-cmd 'reboot'"
-    },
+    "on-click": "qs -c logout",
+    // "menu": "on-click",
+    // "menu-file": "$HOME/.config/waybar/power_menu.xml",
+    // "menu-actions": {
+    //   "hyprexit": "hyprshutdown",
+    //   "shutdown": "hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown now'",
+    //   "reboot": "hyprshutdown -t 'Rebooting...' --post-cmd 'reboot'"
+    // },
     "tooltip-format": ""
   },
   "custom/lock": {
