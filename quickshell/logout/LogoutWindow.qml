@@ -5,108 +5,111 @@ import Quickshell.Io
 import Quickshell.Wayland
 
 Variants {
-	id: root
-	property color backgroundColor: "#ee18181b"
-	property color buttonColor: "#2280ccff"
-	property color buttonHoverColor: "#7780ccff"
-	default property list<LogoutButton> buttons
+    id: root
+    property color backgroundColor: "#ee18181b"
+    property color buttonColor: "#2280ccff"
+    property color buttonHoverColor: "#7780ccff"
+    default property list<LogoutButton> buttons
 
-	model: Quickshell.screens
-	PanelWindow {
-		id: w
+    model: Quickshell.screens
+    PanelWindow {
+        id: w
 
-		property var modelData
-		screen: modelData
+        property var modelData
+        screen: modelData
 
-		exclusionMode: ExclusionMode.Ignore
-		WlrLayershell.layer: WlrLayer.Overlay
-		WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
+        exclusionMode: ExclusionMode.Ignore
+        WlrLayershell.layer: WlrLayer.Overlay
+        WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
 
-		color: "transparent"
+        color: "transparent"
 
-		contentItem {
-			focus: true
-			Keys.onPressed: event => {
-				if (event.key == Qt.Key_Escape) Qt.quit();
-				else {
-					for (let i = 0; i < buttons.length; i++) {
-						let button = buttons[i];
-						if (event.key == button.keybind) button.exec();
-					}
-				}
-			}
-		}
+        contentItem {
+            focus: true
+            Keys.onPressed: event => {
+                if (event.key == Qt.Key_Escape)
+                    Qt.quit();
+                else {
+                    for (let i = 0; i < buttons.length; i++) {
+                        let button = buttons[i];
+                        if (event.key == button.keybind)
+                            button.exec();
+                    }
+                }
+            }
+        }
 
-		anchors {
-			top: true
-			left: true
-			bottom: true
-			right: true
-		}
+        anchors {
+            top: true
+            left: true
+            bottom: true
+            right: true
+        }
 
-		Rectangle {
-			color: backgroundColor;
-			anchors.fill: parent
+        Rectangle {
+            color: backgroundColor
+            anchors.fill: parent
 
-			MouseArea {
-				anchors.fill: parent
-				onClicked: Qt.quit()
+            MouseArea {
+                anchors.fill: parent
+                onClicked: Qt.quit()
 
-				GridLayout {
-					anchors.centerIn: parent
+                GridLayout {
+                    anchors.centerIn: parent
 
-					width: parent.width * 0.75
-					height: parent.height * 0.5
+                    width: parent.width * 0.75
+                    height: parent.height * 0.5
 
-					columns: 3
-					columnSpacing: 4
-					rowSpacing: 4 
+                    columns: 3
+                    columnSpacing: 4
+                    rowSpacing: 4
 
-					Repeater {
-						model: buttons
-						delegate: Rectangle {
-							required property LogoutButton modelData;
+                    Repeater {
+                        model: buttons
+                        delegate: Rectangle {
+                            required property LogoutButton modelData
 
-							Layout.fillWidth: true
-							Layout.fillHeight: true
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
 
-							color: ma.containsMouse ? buttonHoverColor : buttonColor
-							border.color: "#aa80ccff"
-							border.width: ma.containsMouse ? 0 : 1
-              radius: 12
+                            color: ma.containsMouse ? buttonHoverColor : buttonColor
+                            border.color: "#aa80ccff"
+                            border.width: ma.containsMouse ? 0 : 1
+                            radius: 12
 
-							MouseArea {
-								id: ma
-								anchors.fill: parent
-								hoverEnabled: true
-								onClicked: modelData.exec()
-							}
+                            MouseArea {
+                                id: ma
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                onClicked: modelData.exec()
+                            }
 
-			        Image {
-                id: icon
-				        anchors.centerIn: parent
-				        source: modelData.icon
-				        height: parent.width * 0.5 
-                width: parent.width * 0.5
-                fillMode: Image.PreserveAspectFit
-			        }
+                            Image {
+                                id: icon
+                                anchors.centerIn: parent
+                                source: modelData.icon
+                                height: parent.width * 0.5
+                                width: parent.width * 0.5
+                                fillMode: Image.PreserveAspectFit
+                            }
 
-							Text {
-								anchors {
-									top: icon.bottom
-									topMargin: 20
-									horizontalCenter: parent.horizontalCenter
-								}
+                            Text {
+                                anchors {
+                                    top: icon.bottom
+                                    topMargin: 20
+                                    horizontalCenter: parent.horizontalCenter
+                                }
 
-								text: modelData.text
-                font.family: "Noto Sans"
-								font.pointSize: 20
-								color: "#eeeeee"
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+                                text: modelData.text
+                                font.family: "Noto Sans"
+                                font.pointSize: 20
+                                color: "#eeeeee"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 }

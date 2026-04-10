@@ -2,19 +2,18 @@ import QtQuick
 import Quickshell.Io
 
 QtObject {
-	required property string command
-	required property string text
-  required property string icon
-	property var keybind: null
+    id: button
+    required property string command
+    required property string text
+    required property string icon
+    property var keybind: null
 
-	id: button
+    readonly property var process: Process {
+        command: ["sh", "-c", button.command]
+    }
 
-	readonly property var process: Process {
-		command: ["sh", "-c", button.command]
-	}
-
-	function exec() {
-		process.startDetached();
-		Qt.quit();
-	}
+    function exec() {
+        process.startDetached();
+        Qt.quit();
+    }
 }
