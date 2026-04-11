@@ -1,0 +1,15 @@
+pragma Singleton
+import Quickshell
+import QtQuick
+
+Singleton {
+    function alpha(alpha: real, color: color): color {
+        return Qt.rgba(color.r, color.g, color.b, alpha);
+    }
+
+    property color textLight: "#eeeeee"
+    property color primary: "#80ccff"
+    property color primaryBg: alpha(0.2, primary)
+    property color primaryBgDim: alpha(0.1, primary)
+    property color primaryBgHover: alpha(0.33, primary)
+}
