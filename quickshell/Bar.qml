@@ -80,11 +80,10 @@ PanelWindow {
                         Repeater {
                             model: modelData.toplevels
 
-                            Image {
+                            IconImage {
                                 required property var modelData
 
-                                fillMode: Image.PreserveAspectFit
-                                sourceSize: Qt.size(16, 16)
+                                implicitSize: 16
                                 source: {
                                     const icon = DesktopEntries.heuristicLookup(modelData?.wayland?.appId)?.icon;
                                     return Quickshell.iconPath(icon, "application-x-object");

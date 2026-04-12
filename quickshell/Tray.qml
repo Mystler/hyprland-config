@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Effects
 import Quickshell
 import Quickshell.Widgets
 import Quickshell.Services.SystemTray
@@ -49,6 +50,14 @@ RowLayout {
         property alias model: iconImageMenuInstantiator.model
         popupType: Popup.Window
 
+        background: Rectangle {
+            implicitWidth: 200
+            color: Colors.darkBg
+            border.width: 2
+            border.color: Colors.primaryBorder
+            radius: 12
+        }
+
         Instantiator {
             id: iconImageMenuInstantiator
 
@@ -84,10 +93,14 @@ RowLayout {
                                 required property QsMenuEntry modelData
                                 hoverEnabled: true
 
-                                icon.source: modelData ? modelData.icon : ""
-                                text: modelData ? modelData.text : ""
+                                background: Rectangle {
+                                    color: menuItem.highlighted ? Colors.primaryBgHover : "transparent"
+                                }
 
-                                enabled: modelData ? modelData.enabled : false
+                                icon.source: modelData?.icon ?? ""
+                                text: modelData?.text ?? ""
+
+                                enabled: modelData?.enabled ?? false
                                 checkable: modelData ? modelData.buttonType !== QsMenuButtonType.None : false
 
                                 indicator: Loader {
@@ -111,14 +124,14 @@ RowLayout {
                                 Component {
                                     id: checkBoxComponent
                                     CheckBox {
-                                        checkState: menuItem.modelData ? menuItem.modelData.checkState : Qt.Unchecked
+                                        checkState: menuItem.modelData?.checkState ?? Qt.Unchecked
                                     }
                                 }
 
                                 Component {
                                     id: radioButtonComponent
                                     RadioButton {
-                                        checked: menuItem.modelData ? menuItem.modelData.checkState === Qt.Checked : false
+                                        checked: menuItem.modelData?.checkState === Qt.Checked ?? false
                                     }
                                 }
                             }
@@ -135,7 +148,13 @@ RowLayout {
                 DelegateChoice {
                     roleValue: true
 
-                    delegate: MenuSeparator {}
+                    delegate: MenuSeparator {
+                        contentItem: Rectangle {
+                            implicitHeight: 1
+                            implicitWidth: 200
+                            color: Colors.primaryBorder
+                        }
+                    }
                 }
             }
         }
@@ -149,12 +168,12 @@ RowLayout {
             required property QsMenuEntry modelData
             model: menuEntryOpener.children
 
-            enabled: modelData ? modelData.enabled : false
-            title: modelData ? modelData.text : ""
+            enabled: modelData?.enabled ?? false
+            title: modelData?.text ?? ""
 
             QsMenuOpener {
                 id: menuEntryOpener
-                menu: trayMenu.modelData ? trayMenu.modelData : null
+                menu: trayMenu.modelData
             }
         }
     }
