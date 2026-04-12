@@ -2,13 +2,12 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import QtQuick.Effects
 import Quickshell
 import Quickshell.Widgets
 import Quickshell.Services.SystemTray
 
 // TODO: Tooltips
-// TODO: Styling
+// TODO: Style Submenu opener???
 RowLayout {
     spacing: 4
 
@@ -18,8 +17,22 @@ RowLayout {
             id: iconImage
 
             required property SystemTrayItem modelData
+            ToolTip {
+                id: tooltip
+                text: modelData.tooltipDescription || modelData.tooltipTitle
+                visible: text && trayIconMA.containsMouse
+                delay: 400
+                popupType: Popup.Window
 
-            source: modelData ? modelData.icon : ""
+                background: Rectangle {
+                    radius: 6
+                    border.width: 1
+                    border.color: Colors.primaryBorder
+                    color: Colors.darkBg
+                }
+            }
+
+            source: modelData?.icon ?? ""
             implicitSize: 16
 
             QsMenuOpener {
@@ -32,6 +45,8 @@ RowLayout {
             }
 
             MouseArea {
+                id: trayIconMA
+                hoverEnabled: true
                 acceptedButtons: Qt.LeftButton | Qt.MiddleButton
                 anchors.fill: parent
 
@@ -91,10 +106,15 @@ RowLayout {
                                 id: menuItem
 
                                 required property QsMenuEntry modelData
+                                required property int index
                                 hoverEnabled: true
 
                                 background: Rectangle {
                                     color: menuItem.highlighted ? Colors.primaryBgHover : "transparent"
+                                    topLeftRadius: index === 0 ? 12 : 0
+                                    topRightRadius: index === 0 ? 12 : 0
+                                    bottomLeftRadius: (index === count - 1) ? 12 : 0
+                                    bottomRightRadius: (index === count - 1) ? 12 : 0
                                 }
 
                                 icon.source: modelData?.icon ?? ""
