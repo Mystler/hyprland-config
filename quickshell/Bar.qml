@@ -58,7 +58,17 @@ PanelWindow {
                     topMargin: 2
                     bottomMargin: 2
                     radius: 12
-                    color: wsHover.containsMouse ? Colors.primaryBgHover : isActive ? Colors.primaryBg : Colors.primaryBgDim
+                    color: {
+                        if (modelData.urgent && wsHover.containsMouse)
+                            return Colors.alertBgHover;
+                        if (modelData.urgent)
+                            return Colors.alertBg;
+                        if (wsHover.containsMouse)
+                            return Colors.primaryBgHover;
+                        if (modelData.focused)
+                            return Colors.primaryBg;
+                        return Colors.primaryBgDim;
+                    }
 
                     RowLayout {
                         spacing: 4
