@@ -6,8 +6,6 @@ import Quickshell
 import Quickshell.Widgets
 import Quickshell.Services.SystemTray
 
-// TODO: Tooltips
-// TODO: Style Submenu opener???
 RowLayout {
     spacing: 4
 
@@ -71,6 +69,39 @@ RowLayout {
             border.width: 2
             border.color: Colors.primaryBorder
             radius: 12
+        }
+
+        // Delegate handles sub menu opener entries while rest is handled by Instantiator
+        delegate: MenuItem {
+            id: subMenuItem
+            readonly property int index: {
+                for (let i = 0; i < subMenuItem.menu.count; i++) {
+                    if (subMenuItem.menu.itemAt(i) === subMenuItem)
+                        return i;
+                }
+                return -1;
+            }
+
+            readonly property int count: subMenuItem.menu.count
+
+            background: Rectangle {
+                color: subMenuItem.highlighted ? Colors.primaryBgHover : "transparent"
+                topLeftRadius: index === 0 ? 12 : 0
+                topRightRadius: index === 0 ? 12 : 0
+                bottomLeftRadius: (index === count - 1) ? 12 : 0
+                bottomRightRadius: (index === count - 1) ? 12 : 0
+
+                // HoverEnabled on the parent doesn't work because it triggers the menu
+                // Implement the effect manually instead
+                MouseArea {
+                    id: subMenuItemMA
+                    hoverEnabled: true
+                    anchors.fill: parent
+                    onEntered: {
+                        subMenuItem.menu.currentIndex = index;
+                    }
+                }
+            }
         }
 
         Instantiator {
