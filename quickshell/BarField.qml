@@ -5,6 +5,7 @@ import Quickshell.Widgets
 WrapperMouseArea {
     id: root
     default property alias content: contentLayout.data
+    readonly property alias hovered: root.containsMouse
     hoverEnabled: true
 
     WrapperRectangle {

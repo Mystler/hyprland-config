@@ -15,20 +15,9 @@ RowLayout {
             id: iconImage
 
             required property SystemTrayItem modelData
-            ToolTip {
-                id: tooltip
+            Tooltip {
                 text: [modelData.tooltipTitle, modelData.tooltipDescription].filter(x => x).join("\n")
                 visible: text && trayIconMA.containsMouse
-                delay: 400
-                popupType: Popup.Window
-                y: 20
-
-                background: Rectangle {
-                    radius: 6
-                    border.width: 1
-                    border.color: Colors.primaryBorder
-                    color: Colors.darkBg
-                }
             }
 
             source: modelData?.icon ?? ""
