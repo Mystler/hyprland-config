@@ -5,7 +5,7 @@ ToolTip {
     id: tooltip
     delay: 400
     popupType: Popup.Window
-    y: 20
+    y: 26
 
     background: Rectangle {
         radius: 6
