@@ -17,10 +17,11 @@ RowLayout {
             required property SystemTrayItem modelData
             ToolTip {
                 id: tooltip
-                text: modelData.tooltipDescription || modelData.tooltipTitle
+                text: [modelData.tooltipTitle, modelData.tooltipDescription].filter(x => x).join("\n")
                 visible: text && trayIconMA.containsMouse
                 delay: 400
                 popupType: Popup.Window
+                y: 20
 
                 background: Rectangle {
                     radius: 6
