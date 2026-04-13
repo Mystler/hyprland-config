@@ -18,6 +18,7 @@ PanelWindow {
     RowLayout {
         anchors.fill: parent
         anchors.margins: 4
+        anchors.bottomMargin: 0
         spacing: 4
 
         // Logo
@@ -109,17 +110,7 @@ PanelWindow {
             clip: true
         }
 
-        // Clock
-        BarText {
-            id: clock
-            text: Qt.formatDateTime(sysClock.date, "HH:mm")
-
-            SystemClock {
-                id: sysClock
-                precision: SystemClock.Minutes
-            }
-        }
-
+        Clock {}
         Tray {}
 
         // Lock
