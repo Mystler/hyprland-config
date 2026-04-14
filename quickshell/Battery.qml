@@ -13,7 +13,7 @@ Loader {
         bgColor: {
             if (!charging && percent <= 15)
                 return hovered ? Colors.alertBgHover : Color.alertBg;
-            if (charging)
+            if (charging || percent >= 100)
                 return hovered ? Colors.greenBgHover : Colors.greenBg;
             return hovered ? Colors.primaryBgHover : Colors.primaryBg;
         }
