@@ -10,7 +10,6 @@ Variants {
     property color buttonColor: "#2280ccff"
     property color buttonHoverColor: "#7780ccff"
     default property list<LogoutButton> buttons
-    required property var loader
 
     model: Quickshell.screens
     PanelWindow {
@@ -29,13 +28,13 @@ Variants {
             focus: true
             Keys.onPressed: event => {
                 if (event.key == Qt.Key_Escape)
-                    root.loader.active = false;
+                    Global.showLogoutWindow = false;
                 else {
                     for (let i = 0; i < buttons.length; i++) {
                         let button = buttons[i];
                         if (event.key == button.keybind) {
                             button.exec();
-                            root.loader.active = false;
+                            Global.showLogoutWindow = false;
                         }
                     }
                 }
@@ -55,7 +54,7 @@ Variants {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: root.loader.active = false
+                onClicked: Global.showLogoutWindow = false
 
                 GridLayout {
                     anchors.centerIn: parent
@@ -86,7 +85,7 @@ Variants {
                                 hoverEnabled: true
                                 onClicked: {
                                     modelData.exec();
-                                    root.loader.active = false;
+                                    Global.showLogoutWindow = false;
                                 }
                             }
 

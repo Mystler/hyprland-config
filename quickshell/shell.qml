@@ -11,16 +11,14 @@ ShellRoot {
         target: "logout"
 
         function reveal(): void {
-            logoutLoader.active = true;
+            Global.showLogoutWindow = true;
         }
     }
     Loader {
         id: logoutLoader
-        active: false
+        active: Global.showLogoutWindow
 
         sourceComponent: LogoutWindow {
-            loader: logoutLoader
-
             LogoutButton {
                 command: "hyprshutdown"
                 keybind: Qt.Key_H

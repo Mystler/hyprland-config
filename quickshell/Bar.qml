@@ -136,10 +136,7 @@ PanelWindow {
             rightMargin: 4
             cursorShape: Qt.PointingHandCursor
             hoverEnabled: true
-            property var process: Process {
-                command: ["qs", "ipc", "call", "logout", "reveal"]
-            }
-            onClicked: process.startDetached()
+            onClicked: Global.showLogoutWindow = true;
 
             NerdFontIcon {
                 text: ""
