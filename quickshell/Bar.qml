@@ -3,6 +3,7 @@ import Quickshell.Wayland
 import Quickshell.Io
 import Quickshell.Hyprland
 import Quickshell.Widgets
+import Quickshell.Services.Pipewire
 import QtQuick
 import QtQuick.Layouts
 
@@ -109,6 +110,14 @@ PanelWindow {
             Layout.fillWidth: true
             clip: true
         }
+
+        // Pipewire Source and Sink
+        PwAudio {
+            onIcon: "󰍬"
+            offIcon: "󰍭"
+            node: Pipewire.defaultAudioSource
+        }
+        PwAudio {}
 
         // CPU Usage
         BarField {
