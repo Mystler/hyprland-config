@@ -18,4 +18,7 @@ Singleton {
     property color alertBgHover: alpha(0.75, alert)
     property color dark: "#18181b"
     property color darkBg: alpha(0.9, dark)
+    property color green: "#46ff96"
+    property color greenBg: alpha(0.33, green)
+    property color greenBgHover: alpha(0.5, green)
 }

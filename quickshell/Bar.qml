@@ -110,6 +110,32 @@ PanelWindow {
             clip: true
         }
 
+        // CPU Usage
+        BarField {
+            BarText {
+                text: `${Math.round(SystemInfo.cpuPerc)}%`
+            }
+            NerdFontIcon {
+                text: ""
+            }
+        }
+
+        // Memory Usage
+        BarField {
+            id: mem
+            BarText {
+                text: `${Math.round(SystemInfo.usedMemoryPerc)}%`
+            }
+            NerdFontIcon {
+                text: ""
+            }
+            Tooltip {
+                visible: mem.hovered
+                text: `${SystemInfo.usedMemory.toFixed(3)} GiB`
+            }
+        }
+
+        Battery {}
         Clock {}
         Tray {}
 
@@ -136,7 +162,7 @@ PanelWindow {
             rightMargin: 4
             cursorShape: Qt.PointingHandCursor
             hoverEnabled: true
-            onClicked: Global.showLogoutWindow = true;
+            onClicked: Global.showLogoutWindow = true
 
             NerdFontIcon {
                 text: ""

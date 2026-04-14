@@ -6,13 +6,14 @@ WrapperMouseArea {
     id: root
     default property alias content: contentLayout.data
     readonly property alias hovered: root.containsMouse
+    property alias bgColor: frame.color
     hoverEnabled: true
 
     WrapperRectangle {
+        id: frame
+        implicitHeight: 24
         leftMargin: 10
         rightMargin: 10
-        topMargin: 2
-        bottomMargin: 2
         radius: 12
         color: {
             if (root.containsMouse)
