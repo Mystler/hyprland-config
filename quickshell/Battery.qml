@@ -37,6 +37,8 @@ Loader {
         Tooltip {
             visible: hovered
             text: {
+                if (percent >= 100)
+                    return "Full";
                 const time = UPower.displayDevice.timeToFull || UPower.displayDevice.timeToEmpty;
                 const hours = Math.floor(time / 3600);
                 const minutes = Math.floor(time % 3600 / 60);
