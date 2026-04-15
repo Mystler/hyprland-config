@@ -15,8 +15,8 @@ BarField {
         text: {
             if (!Bluetooth.defaultAdapter?.enabled)
                 return "Disabled";
-            const devs = Bluetooth.defaultAdapter.devices.values.map(x => x.name);
-            return `${devs.length} connected` + devs.length > 0 ? `\n\n${devs.join("\n")}` : "";
+            const devs = Bluetooth.defaultAdapter.devices.values.filter(x => x.paired).map(x => x.name);
+            return `${devs.length} connected` + (devs.length > 0 ? `\n${devs.join("\n")}` : "");
         }
     }
 
