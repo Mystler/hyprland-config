@@ -111,6 +111,10 @@ PanelWindow {
             clip: true
         }
 
+        IdleToggle {
+            window: root
+        }
+
         // Pipewire Source and Sink
         PwAudio {
             onIcon: "󰍬"
