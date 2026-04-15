@@ -13,6 +13,8 @@ Singleton {
     property real usedMemory
     property real usedMemoryPerc
 
+    property int brightness
+
     // Real-time CPU Usage
     FileView {
         id: procStat
@@ -45,6 +47,18 @@ Singleton {
             root.usedMemory = (memNumbers[0] - memNumbers[2]) / (1024 * 1024);
             root.usedMemoryPerc = 100 * (1 - memNumbers[2] / memNumbers[0]);
         }
+    }
+
+    FileView {
+        id: brightnessInfo
+        path: "file:///sys/class/backlight/acpi_video0/actual_brightness"
+
+        onLoaded: {
+            root.brightness = parseInt(text());
+        }
+
+        watchChanges: true
+        onFileChanged: this.reload()
     }
 
     // Update Timers

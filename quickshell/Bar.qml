@@ -144,6 +144,7 @@ PanelWindow {
             }
         }
 
+        Backlight {}
         Battery {}
         Clock {}
         Tray {}
