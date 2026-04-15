@@ -123,6 +123,7 @@ PanelWindow {
         }
         PwAudio {}
 
+        Bluetooth {}
         Network {}
 
         // CPU Usage
