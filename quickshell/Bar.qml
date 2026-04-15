@@ -123,6 +123,8 @@ PanelWindow {
         }
         PwAudio {}
 
+        Network {}
+
         // CPU Usage
         BarField {
             BarText {

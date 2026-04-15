@@ -7,6 +7,11 @@ ToolTip {
     popupType: Popup.Window
     y: 26
 
+    contentItem: Text {
+        color: Colors.textLight
+        text: tooltip.text
+    }
+
     background: Rectangle {
         radius: 6
         border.width: 1
