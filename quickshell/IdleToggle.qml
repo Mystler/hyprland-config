@@ -13,4 +13,9 @@ BarField {
     NerdFontIcon {
         text: inhibitor.enabled ? "󰈈" : "󰈉"
     }
+
+    Tooltip {
+        visible: hovered
+        text: `Idle Inhibitor: ${inhibitor.enabled ? "On" : "Off"}`
+    }
 }
