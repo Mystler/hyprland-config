@@ -3,7 +3,7 @@ import QtQuick
 Text {
     color: Colors.textLight
     font {
-        family: "Cascadia Code"
-        pixelSize: 20
+        family: "Symbols Nerd Font"
+        pixelSize: 16
     }
 }
