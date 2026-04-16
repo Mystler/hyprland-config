@@ -65,8 +65,16 @@ PanelWindow {
                 id: scroll
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                contentHeight: appList.view.height
+                contentHeight: appList.contentHeight
                 clip: true
+
+                ScrollBar.vertical {
+                    contentItem: Rectangle {
+                        implicitWidth: 3
+                        color: Colors.primaryBorder
+                        radius: 4
+                    }
+                }
 
                 ListView {
                     id: appList
