@@ -34,7 +34,7 @@ PanelWindow {
                 property var launcher: Process {
                     command: "hyprlauncher"
                 }
-                onClicked: launcher.startDetached()
+                onClicked: Global.showAppLauncher = true
             }
         }
 

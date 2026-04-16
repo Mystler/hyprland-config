@@ -15,9 +15,7 @@ ShellRoot {
         }
     }
     Loader {
-        id: logoutLoader
         active: Global.showLogoutWindow
-
         sourceComponent: LogoutWindow {
             LogoutButton {
                 command: "hyprshutdown"
@@ -40,5 +38,18 @@ ShellRoot {
                 icon: Quickshell.iconPath("system-reboot")
             }
         }
+    }
+
+    // App Launcher
+    IpcHandler {
+        target: "launcher"
+
+        function reveal(): void {
+            Global.showAppLauncher = true;
+        }
+    }
+    Loader {
+        active: Global.showAppLauncher
+        sourceComponent: AppLauncher {}
     }
 }
