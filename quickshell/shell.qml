@@ -2,6 +2,7 @@
 import QtQuick
 import Quickshell
 import Quickshell.Io
+import Quickshell.Hyprland
 
 ShellRoot {
     Bar {}
@@ -13,6 +14,10 @@ ShellRoot {
         function reveal(): void {
             Global.showLogoutWindow = true;
         }
+    }
+    GlobalShortcut {
+        name: "logout"
+        onPressed: Global.showLogoutWindow = !Global.showLogoutWindow
     }
     Loader {
         active: Global.showLogoutWindow
@@ -47,6 +52,10 @@ ShellRoot {
         function reveal(): void {
             Global.showAppLauncher = true;
         }
+    }
+    GlobalShortcut {
+        name: "launcher"
+        onPressed: Global.showAppLauncher = !Global.showAppLauncher
     }
     Loader {
         active: Global.showAppLauncher
