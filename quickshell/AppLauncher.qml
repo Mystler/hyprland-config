@@ -16,15 +16,17 @@ PanelWindow {
     anchors.right: true
     color: "transparent"
 
+    property bool showing: true
+
     function launchSelected() {
         if (appList.currentIndex >= 0 && appList.currentIndex < appList.count) {
             appList.model.values[appList.currentIndex].execute();
-            Global.showAppLauncher = false;
+            root.showing = false;
         }
     }
 
     contentItem {
-        Keys.onEscapePressed: Global.showAppLauncher = false
+        Keys.onEscapePressed: root.showing = false
         Keys.onReturnPressed: launchSelected()
         Keys.onUpPressed: appList.decrementCurrentIndex()
         Keys.onDownPressed: appList.incrementCurrentIndex()
@@ -32,17 +34,39 @@ PanelWindow {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: Global.showAppLauncher = false
+        onClicked: root.showing = false
 
         ClippingRectangle {
+            id: frame
             implicitWidth: 300
             implicitHeight: 200
-            x: 6
+            x: -300
             y: 36
             radius: 12
             border.width: 2
             border.color: Colors.primaryBorder
             color: Colors.darkBg
+
+            states: State {
+                name: "opening"
+                when: root.showing
+                PropertyChanges {
+                    target: frame
+                    x: 6
+                }
+            }
+
+            transitions: Transition {
+                reversible: true
+                NumberAnimation {
+                    properties: "x"
+                    easing.type: Easing.OutQuint
+                }
+                onRunningChanged: {
+                    if (!running && !showing)
+                        Global.showAppLauncher = false;
+                }
+            }
 
             ColumnLayout {
                 anchors.fill: parent
