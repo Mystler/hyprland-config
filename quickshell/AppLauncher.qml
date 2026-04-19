@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell
+import Quickshell.Hyprland
 import Quickshell.Wayland
 import Quickshell.Widgets
 
@@ -17,6 +18,14 @@ PanelWindow {
     color: "transparent"
 
     property bool showing: true
+
+    HyprlandWindow.visibleMask: Region {
+        x: frame.x
+        y: frame.y
+        width: frame.width
+        height: frame.height
+        radius: frame.radius
+    }
 
     function launchSelected() {
         if (appList.currentIndex >= 0 && appList.currentIndex < appList.count) {
