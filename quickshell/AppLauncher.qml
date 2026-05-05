@@ -50,7 +50,7 @@ PanelWindow {
             implicitWidth: 300
             implicitHeight: 200
             x: -300
-            y: 36
+            y: 34
             radius: 12
             border.width: 2
             border.color: Colors.primaryBorder
@@ -61,7 +61,7 @@ PanelWindow {
                 when: root.showing
                 PropertyChanges {
                     target: frame
-                    x: 6
+                    x: 4
                 }
             }
 
